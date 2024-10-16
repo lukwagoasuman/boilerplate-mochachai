@@ -26,8 +26,6 @@ function Utils() {
            } else {
              cb(xmlhttp);
            }
-         }
-      };
 
       const method = options.method || 'get';
       let url = options.url || '/';
@@ -73,8 +71,6 @@ function Utils() {
         xmlhttp.send();
       }
 
-   };
-}
 
 const utils = new Utils();
 
