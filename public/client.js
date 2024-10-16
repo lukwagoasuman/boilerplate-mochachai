@@ -1,21 +1,21 @@
 function Utils() {
-   this.ready = function (fn) {
-      if (typeof fn !== 'function') {
-         return;
-      }
+  this.ready = function (fn) {
+     if (typeof fn !== 'function') {
+        return;
+     }
 
-      if (document.readyState === 'complete') {
-         return fn();
-      }
+     if (document.readyState === 'complete') {
+        return fn();
+     }
 
-      document.addEventListener('DOMContentLoaded', fn, false);
-   };
+     document.addEventListener('DOMContentLoaded', fn, false);
+  };
 
-   this.ajax = function (options, cb) {
-      const xmlhttp = new XMLHttpRequest();
+  this.ajax = function (options, cb) {
+     var xmlhttp = new XMLHttpRequest();
 
-      xmlhttp.onreadystatechange = function () {
-         if (xmlhttp.readyState === 4){
+     xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4){
            if(Math.floor(xmlhttp.status/100) === 2) {
              var results = xmlhttp.responseText;
              var type = xmlhttp.getResponseHeader('Content-Type');
@@ -26,6 +26,8 @@ function Utils() {
            } else {
              cb(xmlhttp);
            }
+         }
+      };
 
       const method = options.method || 'get';
       let url = options.url || '/';
@@ -71,6 +73,8 @@ function Utils() {
         xmlhttp.send();
       }
 
+   };
+}
 
 const utils = new Utils();
 
